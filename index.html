@@ -105,7 +105,150 @@
       <textarea id="illnessDetails" rows="6" placeholder="e.g., Fever started 3 days ago, intermittent, treated with paracetamol..."></textarea>
     </div>
   </div>
-  
+
+  <!-- Section 4: Past History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('pastHistory')">
+    4. Past History
+  </div>
+  <div class="form-content" id="pastHistory">
+    <label>Similar illness in past?</label>
+    <select id="similarIllness">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="surgeries">Any surgeries done?</label>
+    <select id="surgeries">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="bloodTransfusion">Blood transfusion received?</label>
+    <select id="bloodTransfusion">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="allergies">Known allergies (medication/food):</label>
+    <input type="text" id="allergies" placeholder="e.g. Penicillin, Peanuts">
+
+    <label for="otherPastIssues">Other relevant past medical issues:</label>
+    <textarea id="otherPastIssues" rows="3" placeholder="e.g. Hospitalizations, chronic conditions..."></textarea>
+  </div>
+</div>
+
+<!-- Section 5: Antenatal and Birth History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('antenatalBirth')">
+    5. Antenatal and Birth History
+  </div>
+  <div class="form-content" id="antenatalBirth">
+    <label for="antenatalVisits">Regular antenatal visits?</label>
+    <select id="antenatalVisits">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="maternalIllness">Any maternal illness during pregnancy?</label>
+    <textarea id="maternalIllness" rows="2" placeholder="e.g. Diabetes, hypertension..."></textarea>
+
+    <label for="antenatalDrugs">Drugs taken during pregnancy (if any):</label>
+    <textarea id="antenatalDrugs" rows="2" placeholder="e.g. Iron, folic acid, etc."></textarea>
+
+    <label for="deliveryPlace">Place of delivery:</label>
+    <input type="text" id="deliveryPlace" placeholder="e.g. Hospital, Home">
+
+    <label for="deliveryType">Type of delivery:</label>
+    <select id="deliveryType">
+      <option value="">Select</option>
+      <option value="Normal vaginal delivery">Normal vaginal delivery</option>
+      <option value="Caesarean section">Caesarean section</option>
+      <option value="Assisted delivery">Assisted delivery</option>
+    </select>
+
+    <label for="birthWeight">Birth weight (kg):</label>
+    <input type="number" id="birthWeight" step="0.01" placeholder="e.g. 3.2">
+
+    <label for="anyComplications">Any complications at birth?</label>
+    <textarea id="anyComplications" rows="2" placeholder="e.g. Asphyxia, NICU admission..."></textarea>
+  </div>
+</div>
+
+</div>
+
+<!-- Section 6: Feeding History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('feedingHistory')">
+    6. Feeding History
+  </div>
+  <div class="form-content" id="feedingHistory">
+    <label for="breastfeeding">Breastfeeding:</label>
+    <select id="breastfeeding">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="topFeeding">Top feeding (e.g., formula, cow milk):</label>
+    <input type="text" id="topFeeding">
+
+    <label for="weaningAge">Weaning started at (months):</label>
+    <input type="number" id="weaningAge">
+
+    <label for="currentDiet">Current Diet:</label>
+    <textarea id="currentDiet" rows="3" placeholder="Describe the child's current diet..."></textarea>
+  </div>
+</div>
+
+  <!-- Section 7: Immunization History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('immunizationHistory')">
+    7. Immunization History
+  </div>
+  <div class="form-content" id="immunizationHistory">
+    <label for="immunizationStatus">Is the child immunized as per schedule?</label>
+    <select id="immunizationStatus">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="Partially">Partially</option>
+    </select>
+
+    <label for="missingVaccines">If not fully immunized, mention missing vaccines:</label>
+    <textarea id="missingVaccines" rows="2" placeholder="e.g., DPT3, Hepatitis B..."></textarea>
+
+    <label for="adverseEvents">Any adverse events following immunization (AEFI)?</label>
+    <textarea id="adverseEvents" rows="2" placeholder="e.g., Swelling, fever, convulsions..."></textarea>
+  </div>
+</div>
+
+<!-- Section 8: Developmental History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('developmentalHistory')">
+    8. Developmental History
+  </div>
+  <div class="form-content" id="developmentalHistory">
+    <label for="milestones">Were developmental milestones achieved on time?</label>
+    <select id="milestones">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="Not Sure">Not Sure</option>
+    </select>
+
+    <label for="delayedMilestones">If delayed, mention specific milestones delayed:</label>
+    <textarea id="delayedMilestones" rows="2" placeholder="e.g., Sitting, walking, speech..."></textarea>
+
+    <label for="currentDevelopment">Current developmental concerns (if any):</label>
+    <textarea id="currentDevelopment" rows="2" placeholder="e.g., Speech delay, hyperactivity..."></textarea>
+  </div>
+</div>
+
   
   <!-- Submit & Download -->
   <button onclick="downloadData()">Download Data</button>
