@@ -76,6 +76,25 @@
     </div>
   </div>
 
+  <!-- Section 2: Chief Complaints -->
+<div class="section">
+    <div class="section-header" onclick="toggleSection('complaints')">
+      2. Chief Complaints
+    </div>
+    <div class="form-content" id="complaints">
+      <p>Select common complaints:</p>
+      <label><input type="checkbox" name="complaint" value="Fever"> Fever</label>
+      <label><input type="checkbox" name="complaint" value="Cough"> Cough</label>
+      <label><input type="checkbox" name="complaint" value="Cold"> Cold</label>
+      <label><input type="checkbox" name="complaint" value="Vomiting"> Vomiting</label>
+      <label><input type="checkbox" name="complaint" value="Loose Motions"> Loose Motions</label>
+      <label><input type="checkbox" name="complaint" value="Breathing Difficulty"> Breathing Difficulty</label>
+  
+      <label for="otherComplaint" style="margin-top: 10px;">Other Complaints:</label>
+      <input type="text" id="otherComplaint" placeholder="e.g. Skin rash, Crying excessively">
+    </div>
+  </div>
+  
   <!-- Submit & Download -->
   <button onclick="downloadData()">Download Data</button>
 
@@ -86,21 +105,42 @@
     }
 
     function downloadData() {
-      const data = `
-        Patient Name: ${document.getElementById('name').value}
-        Age: ${document.getElementById('age').value}
-        Area of Residence: ${document.getElementById('residence').value}
-        Date of Admission: ${document.getElementById('admission').value}
-        Informant: ${document.getElementById('informant').value}
-        Care taken by: ${document.getElementById('caretaker').value}
-      `;
-
-      const blob = new Blob([data], { type: 'text/plain' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'patient_profile.txt';
-      link.click();
-    }
+        // Patient Profile
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const residence = document.getElementById('residence').value;
+        const admission = document.getElementById('admission').value;
+        const informant = document.getElementById('informant').value;
+        const caretaker = document.getElementById('caretaker').value;
+      
+        // Chief Complaints
+        const checkedComplaints = Array.from(document.querySelectorAll('input[name="complaint"]:checked'))
+          .map(el => el.value);
+        const otherComplaint = document.getElementById('otherComplaint').value;
+        if (otherComplaint) checkedComplaints.push(otherComplaint);
+      
+        // Combined Text
+        const data = `
+        === Patient Profile ===
+        Name: ${name}
+        Age: ${age}
+        Area of Residence: ${residence}
+        Date of Admission: ${admission}
+        Informant: ${informant}
+        Care taken by: ${caretaker}
+      
+        === Chief Complaints ===
+        ${checkedComplaints.join(', ') || 'None'}
+        `;
+      
+        // Download
+        const blob = new Blob([data], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'patient_history.txt';
+        link.click();
+      }
+      
   </script>
 
 </body>
