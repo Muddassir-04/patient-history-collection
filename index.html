@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient History Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .section {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    .section-header {
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .form-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Patient History Collection Form</h2>
+
+  <!-- Section 1: Patient Profile -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection('profile')">
+      1. Patient Profile
+    </div>
+    <div class="form-content" id="profile">
+      <label for="name">Name:</label>
+      <input type="text" id="name">
+
+      <label for="age">Age:</label>
+      <input type="number" id="age">
+
+      <label for="residence">Area of Residence:</label>
+      <input type="text" id="residence">
+
+      <label for="admission">Date of Admission:</label>
+      <input type="date" id="admission">
+
+      <label for="informant">Informant:</label>
+      <input type="text" id="informant">
+
+      <label for="caretaker">Care taken by:</label>
+      <input type="text" id="caretaker">
+    </div>
+  </div>
+
+  <!-- Submit & Download -->
+  <button onclick="downloadData()">Download Data</button>
+
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function downloadData() {
+      const data = `
+        Patient Name: ${document.getElementById('name').value}
+        Age: ${document.getElementById('age').value}
+        Area of Residence: ${document.getElementById('residence').value}
+        Date of Admission: ${document.getElementById('admission').value}
+        Informant: ${document.getElementById('informant').value}
+        Care taken by: ${document.getElementById('caretaker').value}
+      `;
+
+      const blob = new Blob([data], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'patient_profile.txt';
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
