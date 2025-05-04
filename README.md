@@ -12,7 +12,7 @@ This project is a digital tool designed to simplify the process of collecting de
 
 ## 🚀 Live Website
 
-🔗 [Visit Live Site](https://<your-username>.github.io/patient-history-collection/)
+🔗 [Visit Live Site](https://muddassir-04.github.io/patient-history-collection/)
 
 ## 📁 Folder Structure
 
