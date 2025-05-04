@@ -249,11 +249,104 @@
   </div>
 </div>
 
+<!-- Section 9: Family History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('familyHistory')">
+    9. Family History
+  </div>
+  <div class="form-content" id="familyHistory">
+    <label for="familyMembersIll">Any similar illness in family members?</label>
+    <select id="familyMembersIll">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="hereditaryConditions">Any hereditary conditions (e.g., asthma, diabetes, epilepsy)?</label>
+    <textarea id="hereditaryConditions" rows="2" placeholder="List known hereditary conditions if any..."></textarea>
+
+    <label for="familyStructure">Family Structure:</label>
+    <select id="familyStructure">
+      <option value="">Select</option>
+      <option value="Nuclear">Nuclear</option>
+      <option value="Joint">Joint</option>
+      <option value="Extended">Extended</option>
+    </select>
+
+    <label for="numberOfSiblings">Number of siblings:</label>
+    <input type="number" id="numberOfSiblings" min="0">
+  </div>
+</div>
+
+<!-- Section 10: Socioeconomic History -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection('socioeconomicHistory')">
+    10. Socioeconomic History
+  </div>
+  <div class="form-content" id="socioeconomicHistory">
+    <label for="parentEducation">Parents' Education Level:</label>
+    <input type="text" id="parentEducation" placeholder="e.g., Father: Graduate, Mother: 10th pass">
+
+    <label for="parentOccupation">Parents' Occupation:</label>
+    <input type="text" id="parentOccupation" placeholder="e.g., Father: Driver, Mother: Housewife">
+
+    <label for="incomeLevel">Monthly Family Income:</label>
+    <select id="incomeLevel">
+      <option value="">Select</option>
+      <option value="Less than ₹10,000">Less than ₹10,000</option>
+      <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+      <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+      <option value="More than ₹50,000">More than ₹50,000</option>
+    </select>
+
+    <label for="housingType">Type of Housing:</label>
+    <select id="housingType">
+      <option value="">Select</option>
+      <option value="Pucca">Pucca</option>
+      <option value="Semi-Pucca">Semi-Pucca</option>
+      <option value="Kutcha">Kutcha</option>
+    </select>
+
+    <label for="waterSource">Main Source of Drinking Water:</label>
+    <select id="waterSource">
+      <option value="">Select</option>
+      <option value="Tap water">Tap water</option>
+      <option value="Well">Well</option>
+      <option value="Borewell">Borewell</option>
+      <option value="Tankers">Tankers</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="sanitation">Sanitation Facilities:</label>
+    <select id="sanitation">
+      <option value="">Select</option>
+      <option value="Private toilet">Private toilet</option>
+      <option value="Shared toilet">Shared toilet</option>
+      <option value="Open defecation">Open defecation</option>
+    </select>
+  </div>
+</div>
+
   
   <!-- Submit & Download -->
   <button onclick="downloadData()">Download Data</button>
 
   <script src="script.js"></script>
+
+    <!-- Your last section or button -->
+  </div>
+
+  <script>
+    function toggleSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';
+      } else {
+        section.style.display = 'none';
+      }
+    }
+  </script>
+</body>
 
 
 </body>

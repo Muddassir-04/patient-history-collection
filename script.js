@@ -1,12 +1,5 @@
-// Function to toggle visibility of the form content
-function toggleSection(id) {
-  const section = document.getElementById(id);
-  section.style.display = section.style.display === 'block' ? 'none' : 'block';
-}
-
 // Function to gather data and download as a text file
 function downloadData() {
-  // Section 1: Patient Profile
   const name = document.getElementById('name').value;
   const age = document.getElementById('age').value;
   const residence = document.getElementById('residence').value;
@@ -14,23 +7,18 @@ function downloadData() {
   const informant = document.getElementById('informant').value;
   const caretaker = document.getElementById('caretaker').value;
 
-  // Section 2: Chief Complaints
   const checkedComplaints = Array.from(document.querySelectorAll('input[name="complaint"]:checked'))
     .map(el => el.value);
   const otherComplaint = document.getElementById('otherComplaint').value;
   if (otherComplaint) checkedComplaints.push(otherComplaint);
 
-  // Section 3: History of Present Illness
   const illnessDetails = document.getElementById('illnessDetails').value;
-
-  // Section 4: Past History
   const similarIllness = document.getElementById('similarIllness').value || 'Not specified';
   const surgeries = document.getElementById('surgeries').value || 'Not specified';
   const bloodTransfusion = document.getElementById('bloodTransfusion').value || 'Not specified';
   const allergies = document.getElementById('allergies').value || 'None';
   const otherPastIssues = document.getElementById('otherPastIssues').value || 'None';
 
-  // Section 5: Antenatal and Birth History
   const antenatalVisits = document.getElementById('antenatalVisits').value || 'Not specified';
   const maternalIllness = document.getElementById('maternalIllness').value || 'None';
   const antenatalDrugs = document.getElementById('antenatalDrugs').value || 'None';
@@ -39,23 +27,34 @@ function downloadData() {
   const birthWeight = document.getElementById('birthWeight').value || 'Not specified';
   const anyComplications = document.getElementById('anyComplications').value || 'None';
 
-  // Section 6: Feeding History
-const breastfeeding = document.getElementById('breastfeeding').value;
-const topFeeding = document.getElementById('topFeeding').value || 'Not specified';
-const weaningAge = document.getElementById('weaningAge').value || 'Not specified';
-const currentDiet = document.getElementById('currentDiet').value || 'Not specified';
+  const breastfeeding = document.getElementById('breastfeeding').value;
+  const topFeeding = document.getElementById('topFeeding').value || 'Not specified';
+  const weaningAge = document.getElementById('weaningAge').value || 'Not specified';
+  const currentDiet = document.getElementById('currentDiet').value || 'Not specified';
 
-//section 7: immunization history
-const immunizationStatus = document.getElementById('immunizationStatus').value;
-const missingVaccines = document.getElementById('missingVaccines').value;
-const adverseEvents = document.getElementById('adverseEvents').value;
+  const immunizationStatus = document.getElementById('immunizationStatus').value;
+  const missingVaccines = document.getElementById('missingVaccines').value;
+  const adverseEvents = document.getElementById('adverseEvents').value;
 
-//section 8: developmental history
-const milestones = document.getElementById('milestones').value;
-const delayedMilestones = document.getElementById('delayedMilestones').value;
-const currentDevelopment = document.getElementById('currentDevelopment').value;
+  const milestones = document.getElementById('milestones').value;
+  const delayedMilestones = document.getElementById('delayedMilestones').value;
+  const currentDevelopment = document.getElementById('currentDevelopment').value;
 
-  // Combine data
+  const familyMembersIll = document.getElementById('familyMembersIll').value;
+  const hereditaryConditions = document.getElementById('hereditaryConditions').value;
+  const familyStructure = document.getElementById('familyStructure').value;
+  const numberOfSiblings = document.getElementById('numberOfSiblings').value;
+
+  const fatherOccupation = document.getElementById('fatherOccupation').value || 'Not specified';
+  const motherOccupation = document.getElementById('motherOccupation').value || 'Not specified';
+  const educationLevel = document.getElementById('educationLevel').value || 'Not specified';
+  const monthlyIncome = document.getElementById('monthlyIncome').value || 'Not specified';
+  const housingType = document.getElementById('housingType').value || 'Not specified';
+  const waterSupply = document.getElementById('waterSupply').value || 'Not specified';
+  const toiletFacility = document.getElementById('toiletFacility').value || 'Not specified';
+  const electricityAvailable = document.getElementById('electricityAvailable').value || 'Not specified';
+  const socialSupport = document.getElementById('socialSupport').value || 'Not specified';
+
   const data = `
 === Patient Profile ===
 Name: ${name}
@@ -93,19 +92,35 @@ Top Feeding: ${topFeeding}
 Weaning started at: ${weaningAge} months
 Current Diet: ${currentDiet}
 
-'\n=== Immunization History ===\n' +
-'Immunization Status: ' + immunizationStatus + '\n' +
-'Missing Vaccines: ' + missingVaccines + '\n' +
-'Adverse Events: ' + adverseEvents + '\n'
+=== Immunization History ===
+Immunization Status: ${immunizationStatus}
+Missing Vaccines: ${missingVaccines}
+Adverse Events: ${adverseEvents}
 
-'\n=== Developmental History ===\n' +
-'Milestones on time: ' + milestones + '\n' +
-'Delayed Milestones: ' + delayedMilestones + '\n' +
-'Current Developmental Concerns: ' + currentDevelopment + '\n'
+=== Developmental History ===
+Milestones on time: ${milestones}
+Delayed Milestones: ${delayedMilestones}
+Current Developmental Concerns: ${currentDevelopment}
+
+=== Family History ===
+Similar Illness in Family: ${familyMembersIll}
+Hereditary Conditions: ${hereditaryConditions}
+Family Structure: ${familyStructure}
+Number of Siblings: ${numberOfSiblings}
+
+=== Socioeconomic History ===
+Father's Occupation: ${fatherOccupation}
+Mother's Occupation: ${motherOccupation}
+Parental Education Level: ${educationLevel}
+Monthly Family Income: ${monthlyIncome}
+Type of Housing: ${housingType}
+Water Supply: ${waterSupply}
+Toilet Facility: ${toiletFacility}
+Electricity Available: ${electricityAvailable}
+Social Support: ${socialSupport}
 
 `;
 
-  // Create a downloadable .txt file
   const blob = new Blob([data], { type: 'text/plain' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
