@@ -30,6 +30,16 @@ function downloadData() {
   const allergies = document.getElementById('allergies').value || 'None';
   const otherPastIssues = document.getElementById('otherPastIssues').value || 'None';
 
+  // Section 5: Antenatal and Birth History
+  const antenatalVisits = document.getElementById('antenatalVisits').value || 'Not specified';
+  const maternalIllness = document.getElementById('maternalIllness').value || 'None';
+  const antenatalDrugs = document.getElementById('antenatalDrugs').value || 'None';
+  const deliveryPlace = document.getElementById('deliveryPlace').value || 'Not specified';
+  const deliveryType = document.getElementById('deliveryType').value || 'Not specified';
+  const birthWeight = document.getElementById('birthWeight').value || 'Not specified';
+  const anyComplications = document.getElementById('anyComplications').value || 'None';
+
+  // Combine data
   const data = `
 === Patient Profile ===
 Name: ${name}
@@ -51,6 +61,15 @@ Surgeries: ${surgeries}
 Blood transfusion: ${bloodTransfusion}
 Allergies: ${allergies}
 Other past issues: ${otherPastIssues}
+
+=== Antenatal and Birth History ===
+Regular antenatal visits: ${antenatalVisits}
+Maternal illness during pregnancy: ${maternalIllness}
+Drugs taken during pregnancy: ${antenatalDrugs}
+Place of delivery: ${deliveryPlace}
+Type of delivery: ${deliveryType}
+Birth weight: ${birthWeight} kg
+Complications at birth: ${anyComplications}
 `;
 
   // Create a downloadable .txt file
