@@ -39,6 +39,22 @@ function downloadData() {
   const birthWeight = document.getElementById('birthWeight').value || 'Not specified';
   const anyComplications = document.getElementById('anyComplications').value || 'None';
 
+  // Section 6: Feeding History
+const breastfeeding = document.getElementById('breastfeeding').value;
+const topFeeding = document.getElementById('topFeeding').value || 'Not specified';
+const weaningAge = document.getElementById('weaningAge').value || 'Not specified';
+const currentDiet = document.getElementById('currentDiet').value || 'Not specified';
+
+//section 7: immunization history
+const immunizationStatus = document.getElementById('immunizationStatus').value;
+const missingVaccines = document.getElementById('missingVaccines').value;
+const adverseEvents = document.getElementById('adverseEvents').value;
+
+//section 8: developmental history
+const milestones = document.getElementById('milestones').value;
+const delayedMilestones = document.getElementById('delayedMilestones').value;
+const currentDevelopment = document.getElementById('currentDevelopment').value;
+
   // Combine data
   const data = `
 === Patient Profile ===
@@ -70,6 +86,23 @@ Place of delivery: ${deliveryPlace}
 Type of delivery: ${deliveryType}
 Birth weight: ${birthWeight} kg
 Complications at birth: ${anyComplications}
+
+=== Feeding History ===
+Breastfeeding: ${breastfeeding}
+Top Feeding: ${topFeeding}
+Weaning started at: ${weaningAge} months
+Current Diet: ${currentDiet}
+
+'\n=== Immunization History ===\n' +
+'Immunization Status: ' + immunizationStatus + '\n' +
+'Missing Vaccines: ' + missingVaccines + '\n' +
+'Adverse Events: ' + adverseEvents + '\n'
+
+'\n=== Developmental History ===\n' +
+'Milestones on time: ' + milestones + '\n' +
+'Delayed Milestones: ' + delayedMilestones + '\n' +
+'Current Developmental Concerns: ' + currentDevelopment + '\n'
+
 `;
 
   // Create a downloadable .txt file
