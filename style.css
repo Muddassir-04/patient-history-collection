@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Pacifico&display=swap');
+
+/* Reset body font */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Homepage layout */
+body.home {
+  height: 100vh;
+  background: linear-gradient(135deg, #caf0f8, #90e0ef, #00b4d8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Center box */
+.homepage-content {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Logo text */
+.logo-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 64px;
+  color: #023e8a;
+  margin-bottom: 10px;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 18px;
+  color: #495057;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+/* Button */
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  background-color: #0077b6;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #023e8a;
+  transform: scale(1.05);
+}
