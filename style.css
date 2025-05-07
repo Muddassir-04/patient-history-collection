@@ -60,3 +60,19 @@ button:hover {
   background-color: #023e8a;
   transform: scale(1.05);
 }
+
+
+  
+
+  /* Smooth toggle animation */
+  .form-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+  }
+
+  .form-content.open {
+    padding-top: 15px;
+    max-height: 1000px; /* Large enough to fit any section */
+  }
+
