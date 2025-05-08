@@ -1,121 +1,105 @@
+// script.js
+
+// Function to toggle the visibility of a section's content
+function toggleSection(sectionId) {
+  const content = document.getElementById(sectionId);
+  const header = content.previousElementSibling; // Get the section header
+  const isOpen = content.classList.contains("open");
+
+  if (isOpen) {
+    content.classList.remove("open");
+    header.setAttribute("aria-expanded", "false");
+    content.setAttribute("aria-hidden", "true");
+    header.classList.remove("active");
+  } else {
+    content.classList.add("open");
+    content.style.display = "block"; // Ensure display is block when opening
+    header.setAttribute("aria-expanded", "true");
+    content.setAttribute("aria-hidden", "false");
+    header.classList.add("active");
+  }
+}
+
+// Function to collect form data and download it as a JSON file
 function downloadData() {
-  const name = document.getElementById('name').value;
-  const age = document.getElementById('age').value;
-  const residence = document.getElementById('residence').value;
-  const admission = document.getElementById('admission').value;
-  const informant = document.getElementById('informant').value;
-  const caretaker = document.getElementById('caretaker').value;
+  // Collect data from all form fields
+  const formData = {
+    patientProfile: {
+      name: document.getElementById("name").value,
+      age: document.getElementById("age").value,
+      residence: document.getElementById("residence").value,
+      admission: document.getElementById("admission").value,
+      informant: document.getElementById("informant").value,
+      caretaker: document.getElementById("caretaker").value,
+    },
+    chiefComplaints: {
+      complaints: Array.from(document.querySelectorAll('input[name="complaint"]:checked')).map(
+        (checkbox) => checkbox.value
+      ),
+      otherComplaint: document.getElementById("otherComplaint").value,
+    },
+    illnessHistory: {
+      illnessDetails: document.getElementById("illnessDetails").value,
+    },
+    pastHistory: {
+      similarIllness: document.getElementById("similarIllness").value,
+      surgeries: document.getElementById("surgeries").value,
+      bloodTransfusion: document.getElementById("bloodTransfusion").value,
+      allergies: document.getElementById("allergies").value,
+      otherPastIssues: document.getElementById("otherPastIssues").value,
+    },
+    antenatalBirth: {
+      antenatalVisits: document.getElementById("antenatalVisits").value,
+      maternalIllness: document.getElementById("maternalIllness").value,
+      antenatalDrugs: document.getElementById("antenatalDrugs").value,
+      deliveryPlace: document.getElementById("deliveryPlace").value,
+      deliveryType: document.getElementById("deliveryType").value,
+      birthWeight: document.getElementById("birthWeight").value,
+      anyComplications: document.getElementById("anyComplications").value,
+    },
+    feedingHistory: {
+      breastfeeding: document.getElementById("breastfeeding").value,
+      topFeeding: document.getElementById("topFeeding").value,
+      weaningAge: document.getElementById("weaningAge").value,
+      currentDiet: document.getElementById("currentDiet").value,
+    },
+    immunizationHistory: {
+      immunizationStatus: document.getElementById("immunizationStatus").value,
+      missingVaccines: document.getElementById("missingVaccines").value,
+      adverseEvents: document.getElementById("adverseEvents").value,
+    },
+    developmentalHistory: {
+      milestones: document.getElementById("milestones").value,
+      delayedMilestones: document.getElementById("delayedMilestones").value,
+      currentDevelopment: document.getElementById("currentDevelopment").value,
+    },
+    familyHistory: {
+      familyMembersIll: document.getElementById("familyMembersIll").value,
+      hereditaryConditions: document.getElementById("hereditaryConditions").value,
+      familyStructure: document.getElementById("familyStructure").value,
+      numberOfSiblings: document.getElementById("numberOfSiblings").value,
+    },
+    socioeconomicHistory: {
+      parentEducation: document.getElementById("parentEducation").value,
+      parentOccupation: document.getElementById("parentOccupation").value,
+      incomeLevel: document.getElementById("incomeLevel").value,
+      housingType: document.getElementById("housingType").value,
+      waterSource: document.getElementById("waterSource").value,
+      sanitation: document.getElementById("sanitation").value,
+    },
+  };
 
-  const checkedComplaints = Array.from(document.querySelectorAll('input[name="complaint"]:checked')).map(el => el.value);
-  const otherComplaint = document.getElementById('otherComplaint').value;
-  if (otherComplaint) checkedComplaints.push(otherComplaint);
+  // Convert form data to JSON string
+  const jsonData = JSON.stringify(formData, null, 2);
 
-  const illnessDetails = document.getElementById('illnessDetails').value;
-  const similarIllness = document.getElementById('similarIllness').value;
-  const surgeries = document.getElementById('surgeries').value;
-  const bloodTransfusion = document.getElementById('bloodTransfusion').value;
-  const allergies = document.getElementById('allergies').value;
-  const otherPastIssues = document.getElementById('otherPastIssues').value;
-
-  const antenatalVisits = document.getElementById('antenatalVisits').value;
-  const maternalIllness = document.getElementById('maternalIllness').value;
-  const antenatalDrugs = document.getElementById('antenatalDrugs').value;
-  const deliveryPlace = document.getElementById('deliveryPlace').value;
-  const deliveryType = document.getElementById('deliveryType').value;
-  const birthWeight = document.getElementById('birthWeight').value;
-  const anyComplications = document.getElementById('anyComplications').value;
-
-  const breastfeeding = document.getElementById('breastfeeding').value;
-  const topFeeding = document.getElementById('topFeeding').value;
-  const weaningAge = document.getElementById('weaningAge').value;
-  const currentDiet = document.getElementById('currentDiet').value;
-
-  const immunizationStatus = document.getElementById('immunizationStatus').value;
-  const missingVaccines = document.getElementById('missingVaccines').value;
-  const adverseEvents = document.getElementById('adverseEvents').value;
-
-  const milestones = document.getElementById('milestones').value;
-  const delayedMilestones = document.getElementById('delayedMilestones').value;
-  const currentDevelopment = document.getElementById('currentDevelopment').value;
-
-  const familyMembersIll = document.getElementById('familyMembersIll').value;
-  const hereditaryConditions = document.getElementById('hereditaryConditions').value;
-  const familyStructure = document.getElementById('familyStructure').value;
-  const numberOfSiblings = document.getElementById('numberOfSiblings').value;
-
-  // ✅ Use actual IDs from your HTML
-  const parentOccupation = document.getElementById('parentOccupation').value;
-  const parentEducation = document.getElementById('parentEducation').value;
-  const incomeLevel = document.getElementById('incomeLevel').value;
-  const housingType = document.getElementById('housingType').value;
-  const waterSource = document.getElementById('waterSource').value;
-  const sanitation = document.getElementById('sanitation').value;
-
-  const data = `
-=== Patient Profile ===
-Name: ${name}
-Age: ${age}
-Area of Residence: ${residence}
-Date of Admission: ${admission}
-Informant: ${informant}
-Care taken by: ${caretaker}
-
-=== Chief Complaints ===
-${checkedComplaints.join(', ') || 'None'}
-
-=== History of Present Illness ===
-${illnessDetails || 'Not provided'}
-
-=== Past History ===
-Similar illness in past: ${similarIllness}
-Surgeries: ${surgeries}
-Blood transfusion: ${bloodTransfusion}
-Allergies: ${allergies}
-Other past issues: ${otherPastIssues}
-
-=== Antenatal and Birth History ===
-Regular antenatal visits: ${antenatalVisits}
-Maternal illness during pregnancy: ${maternalIllness}
-Drugs taken during pregnancy: ${antenatalDrugs}
-Place of delivery: ${deliveryPlace}
-Type of delivery: ${deliveryType}
-Birth weight: ${birthWeight} kg
-Complications at birth: ${anyComplications}
-
-=== Feeding History ===
-Breastfeeding: ${breastfeeding}
-Top Feeding: ${topFeeding}
-Weaning started at: ${weaningAge} months
-Current Diet: ${currentDiet}
-
-=== Immunization History ===
-Immunization Status: ${immunizationStatus}
-Missing Vaccines: ${missingVaccines}
-Adverse Events: ${adverseEvents}
-
-=== Developmental History ===
-Milestones on time: ${milestones}
-Delayed Milestones: ${delayedMilestones}
-Current Developmental Concerns: ${currentDevelopment}
-
-=== Family History ===
-Similar Illness in Family: ${familyMembersIll}
-Hereditary Conditions: ${hereditaryConditions}
-Family Structure: ${familyStructure}
-Number of Siblings: ${numberOfSiblings}
-
-=== Socioeconomic History ===
-Parents' Occupation: ${parentOccupation}
-Parents' Education: ${parentEducation}
-Monthly Income: ${incomeLevel}
-Housing Type: ${housingType}
-Drinking Water Source: ${waterSource}
-Sanitation: ${sanitation}
-`;
-
-  const blob = new Blob([data], { type: 'text/plain' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'patient_history.txt';
-  link.click();
+  // Create a downloadable file
+  const blob = new Blob([jsonData], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "patient_history.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }

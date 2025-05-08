@@ -283,3 +283,32 @@ button:hover {
     font-size: 40px;
   }
 }
+
+/* In HTML <style> or style.css */
+.form-content {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 15px;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.form-content.open {
+  padding-top: 15px;
+  max-height: 1000px; /* Adjust if content is larger */
+}
+
+/* Visual indicator for section header */
+.section-header {
+  position: relative;
+}
+
+.section-header::after {
+  content: '▼';
+  position: absolute;
+  right: 12px;
+  transition: transform 0.3s ease;
+}
+
+.section-header.active::after {
+  transform: rotate(180deg);
+}
