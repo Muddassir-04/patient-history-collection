@@ -1,4 +1,3 @@
-// Function to gather data and download as a text file
 function downloadData() {
   const name = document.getElementById('name').value;
   const age = document.getElementById('age').value;
@@ -7,30 +6,29 @@ function downloadData() {
   const informant = document.getElementById('informant').value;
   const caretaker = document.getElementById('caretaker').value;
 
-  const checkedComplaints = Array.from(document.querySelectorAll('input[name="complaint"]:checked'))
-    .map(el => el.value);
+  const checkedComplaints = Array.from(document.querySelectorAll('input[name="complaint"]:checked')).map(el => el.value);
   const otherComplaint = document.getElementById('otherComplaint').value;
   if (otherComplaint) checkedComplaints.push(otherComplaint);
 
   const illnessDetails = document.getElementById('illnessDetails').value;
-  const similarIllness = document.getElementById('similarIllness').value || 'Not specified';
-  const surgeries = document.getElementById('surgeries').value || 'Not specified';
-  const bloodTransfusion = document.getElementById('bloodTransfusion').value || 'Not specified';
-  const allergies = document.getElementById('allergies').value || 'None';
-  const otherPastIssues = document.getElementById('otherPastIssues').value || 'None';
+  const similarIllness = document.getElementById('similarIllness').value;
+  const surgeries = document.getElementById('surgeries').value;
+  const bloodTransfusion = document.getElementById('bloodTransfusion').value;
+  const allergies = document.getElementById('allergies').value;
+  const otherPastIssues = document.getElementById('otherPastIssues').value;
 
-  const antenatalVisits = document.getElementById('antenatalVisits').value || 'Not specified';
-  const maternalIllness = document.getElementById('maternalIllness').value || 'None';
-  const antenatalDrugs = document.getElementById('antenatalDrugs').value || 'None';
-  const deliveryPlace = document.getElementById('deliveryPlace').value || 'Not specified';
-  const deliveryType = document.getElementById('deliveryType').value || 'Not specified';
-  const birthWeight = document.getElementById('birthWeight').value || 'Not specified';
-  const anyComplications = document.getElementById('anyComplications').value || 'None';
+  const antenatalVisits = document.getElementById('antenatalVisits').value;
+  const maternalIllness = document.getElementById('maternalIllness').value;
+  const antenatalDrugs = document.getElementById('antenatalDrugs').value;
+  const deliveryPlace = document.getElementById('deliveryPlace').value;
+  const deliveryType = document.getElementById('deliveryType').value;
+  const birthWeight = document.getElementById('birthWeight').value;
+  const anyComplications = document.getElementById('anyComplications').value;
 
   const breastfeeding = document.getElementById('breastfeeding').value;
-  const topFeeding = document.getElementById('topFeeding').value || 'Not specified';
-  const weaningAge = document.getElementById('weaningAge').value || 'Not specified';
-  const currentDiet = document.getElementById('currentDiet').value || 'Not specified';
+  const topFeeding = document.getElementById('topFeeding').value;
+  const weaningAge = document.getElementById('weaningAge').value;
+  const currentDiet = document.getElementById('currentDiet').value;
 
   const immunizationStatus = document.getElementById('immunizationStatus').value;
   const missingVaccines = document.getElementById('missingVaccines').value;
@@ -45,15 +43,13 @@ function downloadData() {
   const familyStructure = document.getElementById('familyStructure').value;
   const numberOfSiblings = document.getElementById('numberOfSiblings').value;
 
-  const fatherOccupation = document.getElementById('fatherOccupation').value || 'Not specified';
-  const motherOccupation = document.getElementById('motherOccupation').value || 'Not specified';
-  const educationLevel = document.getElementById('educationLevel').value || 'Not specified';
-  const monthlyIncome = document.getElementById('monthlyIncome').value || 'Not specified';
-  const housingType = document.getElementById('housingType').value || 'Not specified';
-  const waterSupply = document.getElementById('waterSupply').value || 'Not specified';
-  const toiletFacility = document.getElementById('toiletFacility').value || 'Not specified';
-  const electricityAvailable = document.getElementById('electricityAvailable').value || 'Not specified';
-  const socialSupport = document.getElementById('socialSupport').value || 'Not specified';
+  // ✅ Use actual IDs from your HTML
+  const parentOccupation = document.getElementById('parentOccupation').value;
+  const parentEducation = document.getElementById('parentEducation').value;
+  const incomeLevel = document.getElementById('incomeLevel').value;
+  const housingType = document.getElementById('housingType').value;
+  const waterSource = document.getElementById('waterSource').value;
+  const sanitation = document.getElementById('sanitation').value;
 
   const data = `
 === Patient Profile ===
@@ -109,16 +105,12 @@ Family Structure: ${familyStructure}
 Number of Siblings: ${numberOfSiblings}
 
 === Socioeconomic History ===
-Father's Occupation: ${fatherOccupation}
-Mother's Occupation: ${motherOccupation}
-Parental Education Level: ${educationLevel}
-Monthly Family Income: ${monthlyIncome}
-Type of Housing: ${housingType}
-Water Supply: ${waterSupply}
-Toilet Facility: ${toiletFacility}
-Electricity Available: ${electricityAvailable}
-Social Support: ${socialSupport}
-
+Parents' Occupation: ${parentOccupation}
+Parents' Education: ${parentEducation}
+Monthly Income: ${incomeLevel}
+Housing Type: ${housingType}
+Drinking Water Source: ${waterSource}
+Sanitation: ${sanitation}
 `;
 
   const blob = new Blob([data], { type: 'text/plain' });
