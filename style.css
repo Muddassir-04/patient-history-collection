@@ -36,6 +36,8 @@ body {
   color: white;
   font-size: 24px;
   cursor: pointer;
+  padding: 0;
+  margin-left: auto;
 }
 
 .nav-links {
@@ -247,18 +249,26 @@ textarea {
 @media (max-width: 768px) {
   .navbar {
     padding: 12px 20px;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-size: 24px;
   }
 
   .nav-toggle {
-    display: block;
+    display: block !important; /* Ensure visibility */
+    font-size: 24px;
+    margin-left: auto;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
-    padding-left: 0;
+    padding: 10px 0;
     margin-top: 10px;
     max-height: 0;
     overflow: hidden;
@@ -267,7 +277,7 @@ textarea {
 
   .nav-links.show {
     display: flex;
-    max-height: 200px;
+    max-height: 250px; /* Increased to fit all links */
   }
 
   .nav-links li {
@@ -276,10 +286,6 @@ textarea {
 
   .nav-links li a {
     font-size: 14px;
-  }
-
-  .nav-logo {
-    font-size: 24px;
   }
 
   .homepage-content {
