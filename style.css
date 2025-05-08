@@ -247,6 +247,7 @@ textarea {
 
 /* Responsive layout */
 @media (max-width: 768px) {
+  /* Navbar for all pages */
   .navbar {
     padding: 12px 20px;
     flex-direction: row;
@@ -259,7 +260,7 @@ textarea {
   }
 
   .nav-toggle {
-    display: block !important; /* Ensure visibility */
+    display: block !important;
     font-size: 24px;
     margin-left: auto;
   }
@@ -277,7 +278,7 @@ textarea {
 
   .nav-links.show {
     display: flex;
-    max-height: 250px; /* Increased to fit all links */
+    max-height: 250px;
   }
 
   .nav-links li {
@@ -288,8 +289,25 @@ textarea {
     font-size: 14px;
   }
 
+  /* Homepage-specific styles */
+  body.home .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  body.home {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-top: 60px; /* Space for fixed navbar */
+  }
+
   .homepage-content {
     padding: 20px;
+    margin: 20px auto;
   }
 
   .logo-text {
@@ -325,9 +343,23 @@ textarea {
     font-size: 13px;
   }
 
+  /* Homepage-specific styles */
+  body.home .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  body.home {
+    padding-top: 50px; /* Adjusted for smaller navbar */
+  }
+
   .homepage-content {
     padding: 15px;
     width: 95%;
+    margin: 15px auto;
   }
 
   .logo-text {
